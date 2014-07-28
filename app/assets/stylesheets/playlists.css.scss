@@ -1,0 +1,39 @@
+// Place all the styles related to the playlists controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#playlist_panel {
+    padding-top: 20px;
+}
+
+.dropdown.polls-subtitle {
+    font-size: 24px;
+    font-weight: 300;
+}
+
+span#pl-song-thumb img {
+    width: 72px;
+    float: left;
+    margin-right: 12px;
+}
+
+h4#pl-song-title {
+    text-align: left
+}
+
+.clearfix:after {
+    content: ".";           /*Text will appear below all the floating children, can be any symbol really*/
+    display: block;     /*Makes . symbol take up all the horizontal space, 100% of parent container*/
+    clear: both;          /*Makes . symbol clear past the floating children, it's like having a foreign exchange student keep your room*/
+    visibility: hidden; /*Makes the . invisible*/
+    height: 0;             /*Makes . not take up any vertical height*/
+    line-height:0;  /*Makes height btw lines of text 0*/
+}
+
+.truncate {
+    width: 220px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

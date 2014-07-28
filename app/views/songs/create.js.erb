@@ -1,0 +1,9 @@
+$('#playlist_songs').append("<div class='clearfix'><div class='song' data-embed-url='<%= j Song.last.embed_url %>' data-title='<%= j Song.last.title %>'><span id='pl-song-thumb'><img src='<%=j Song.last.thumbnail%>'></span><h4 id='pl-song-title' class='truncate'><%= j Song.last.title %></h4></div></div>");
+$('.song').click(function() {
+    console.log("clicked playlist's song");
+    var vidTitle = $(this).data('title');
+    console.log(vidTitle);
+    $('#active-song-title').text(vidTitle);
+    var embedUrl = $(this).data('embed-url');
+    document.getElementById('vid_frame').src = "//" + embedUrl;
+});

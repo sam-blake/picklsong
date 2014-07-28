@@ -1,0 +1,19 @@
+<!--Results List-->
+<div class="vid-list-container">
+    <div class="vid-list">
+        <% @alternatives.each_with_index do |result, index| %>
+            <div class="vid-item", data-attributes="<%= result.attributes.to_json %>">
+                <div class="thumb">
+                    <img src="<%= result.thumbnail %>">
+                </div>
+                <div class="desc truncate line-clamp">
+                    <%= result.title %>
+                </div>
+            </div>
+            <% end %>
+    </div><!--vid-list-->
+</div><!--vid-list-container-->
+<div class="arrows">
+    <div class="arrow-left"><i class="fa fa-chevron-left fa-lg"></i></div>
+    <div class="arrow-right"><i class="fa fa-chevron-right fa-lg"></i></div>
+</div>
