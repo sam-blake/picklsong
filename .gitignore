@@ -23,4 +23,4 @@
 
 # Ignore post views
 /app/views/playlists/update.html.erb
-/app/views/results/create.html.erb
+/app/views/results/create.html.erb.env
