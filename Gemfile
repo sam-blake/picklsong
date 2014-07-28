@@ -47,5 +47,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 # Local Gems
-gem 'SongPicklr', path: 'lib/gems/SongPicklr'
+gem 'SongPicklr', path: 'lib/gems/songpicklr'
 ruby "2.1.1"
