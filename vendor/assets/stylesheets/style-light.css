@@ -973,13 +973,7 @@ p {
     bottom: 0;
     background: rgba(76, 221, 243, 0.8);
 }
-.testimonial-list .testimonial-item a.current ~ .testimonial-icon, .testimonial-list .testimonial-item a:hover ~ .testimonial-icon {
-    top: 18px;
-    opacity: 1;
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-    -0-opacity: 1;
-}
+
 .testimonial-slider {
     margin: 5px auto;
     max-width: 700px;
