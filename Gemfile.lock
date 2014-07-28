@@ -1,5 +1,5 @@
 PATH
-  remote: lib/gems/SongPicklr
+  remote: lib/gems/songpicklr
   specs:
     SongPicklr (0.0.1)
       rest-client
