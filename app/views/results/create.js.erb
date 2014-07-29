@@ -1,8 +1,10 @@
-if ($('.main-video').children().length === 0){
-    $('.main-video').html("<%= j(render("results/vidmain")) %>");
+if ($('.main-video').children().length === 0) {
+    $('.main-video').html("<%= j(render("
+        results / vidmain ")) %>");
 }
 
-$('.search-results').html("<%= j(render("results/vidresults")) %>");
+$('.search-results').html("<%= j(render("
+    results / vidresults ")) %>");
 
 $(document).ready(function() {
     $('.vid-item').click(function() {
@@ -12,7 +14,10 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",
             url: "/songs",
-            data: {song: vidAttributes, playlist: activePlaylist},
+            data: {
+                song: vidAttributes,
+                playlist: activePlaylist
+            },
             dataType: 'script',
             success: console.log("It worked!", vidAttributes, activePlaylist)
         });

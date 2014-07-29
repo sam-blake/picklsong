@@ -27,7 +27,6 @@
 //= require jquery.sudoslider.min.js
 //= require jquery_ujs
 //= require main.js
-//= require turbolinks
 //= require modernizr.custom.js
 //= require grid
 //= require_tree .
