@@ -1,10 +1,10 @@
-$('.search-results').html("<%= j(render("results/vidresults ")) %>");
+$('.search-results').html("<%= j(render("results/vidresults")) %>");
 
 $(document).ready(function() {
     $('.vid-item').click(function() {
         console.log('clicked');
         var vidAttributes = $(this).data('attributes');
-        var activePlaylist = $('.active-playlist').data('id');
+        var activePlaylist = $('.active-playlist').data('id')
         $.ajax({
             type: "POST",
             url: "/songs",
@@ -15,6 +15,8 @@ $(document).ready(function() {
             dataType: 'script',
             success: console.log("It worked!", vidAttributes, activePlaylist)
         });
+        var playlist = $('#' + activePlaylist);
+        playlist.data('songs').push(vidAttributes);
     });
 });
 
