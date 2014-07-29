@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem "pry"
+gem "binding_of_caller"
 # Devise gem
 gem 'devise'
 # Use jquery as the JavaScript library
