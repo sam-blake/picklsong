@@ -28,7 +28,17 @@
   }
 
   function playNextSong() {
-    var currentSongId = $('#main-player').data('video-id');
+    // Figure out currently playing song
+    var activeSongTitle = $('#active-song-title').text();
+    console.log(activeSongTitle);
     
+    // Creating variable equal to NEW video id
+    // var currentSongId = $('#main-player').data('video-id');
+    var nextSongId = $(".song[data-title='" + activeSongTitle + "']").parent().next().children().data('video-id');
+    // var nextSongId = $('.song[data-title="Beyonce - If I Were A Boy (Karaoke)"]').parent().next().children().data('video-id');
+    console.log(nextSongId);
+
+    // Change video
+    player.loadVideoById(nextSongId);
   }
 // Ajax needs to change vid-container video_id in _vidmain.html.erb
