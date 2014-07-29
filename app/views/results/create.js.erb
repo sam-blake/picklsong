@@ -1,7 +1,3 @@
-if ($('.main-video').children().length === 0){
-    $('.main-video').html("<%= j(render("results/vidmain")) %>");
-}
-
 $('.search-results').html("<%= j(render("results/vidresults")) %>");
 
 $(document).ready(function() {

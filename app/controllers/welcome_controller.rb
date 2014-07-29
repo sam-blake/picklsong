@@ -1,8 +1,9 @@
 class WelcomeController < ApplicationController
   def index
     @playlists = Playlist.all
-    @query = SongPicklr::Search.new("push it")
+    @query = SongPicklr::Search.new("lyrics")
     @results = @query.query_items
-    @main = @results.first
+    # Choose a song from first 15 results randomly
+    @main = @results.sample
   end
 end
