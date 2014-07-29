@@ -19,4 +19,5 @@ $(document).on('page:change', function() {
             scrollLeft: "-=336"
         }, 750);
     });
+
 });
