@@ -8,10 +8,7 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",
             url: "/songs",
-            data: {
-                song: vidAttributes,
-                playlist: activePlaylist
-            },
+            data: {song: vidAttributes,playlist: activePlaylist},
             dataType: 'script',
             success: console.log("It worked!", vidAttributes, activePlaylist)
         });

@@ -39,9 +39,7 @@ $(document).ready(function() {
                 console.log('in playNextSong function');
                 player.loadVideoById(clickedSongId);
             }
-        });
-
-        
+        });  
 
     });
 });
