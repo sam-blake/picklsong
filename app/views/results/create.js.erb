@@ -16,7 +16,9 @@ $(document).ready(function() {
             success: console.log("It worked!", vidAttributes, activePlaylist)
         });
         var playlist = $('#' + activePlaylist);
-        playlist.data('songs').push(vidAttributes);
+        var addMe = playlist.data('songs');
+        addMe.push(vidAttributes);
+        playlist.attr('data-songs', JSON.stringify(addMe));
     });
 });
 
