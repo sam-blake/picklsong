@@ -13,6 +13,8 @@ class SongsController < ApplicationController
   end
 
   def destroy
+    @song = Song.destroy(params[:id])
+    @id = params[:id]
   end
 
   private

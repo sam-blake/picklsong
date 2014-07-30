@@ -1,5 +1,13 @@
-$('#playlist_songs').append("<div class='clearfix'><div class='song' data-embed-url='<%= j Song.last.embed_url %>' data-title='<%= j Song.last.title %>'><div id='pl-song-thumb'><img src='<%=j Song.last.thumbnail%>'></div><div id='pl-song-title' class='desc truncate line-clamp'>" + songData[i].title + "</div></div></div>");
-$('#playlist_songs').append("<a class='song-delete-button'><i class='fa fa-minus-circle'></i></a>");
+$('#playlist_songs').append("<div class='clearfix'><div class='song' data-id='<%= j Song.last.id.to_s %>' data-embed-url='<%= j Song.last.embed_url %>' data-title='<%= j Song.last.title %>'><span id='pl-song-thumb'><img src='<%=j Song.last.thumbnail%>'></span><h4 id='pl-song-title' class='truncate'><%= j Song.last.title %></h4><a class='song-delete-button'><i class='fa fa-minus-circle'></i></a></div></div>");
+var id = $('.song').data('id');
+$('.song-delete-button').click(function() {
+    var song_id = $(this).parent().data('id');
+    console.log(song_id);
+    $.ajax({
+        url: "/songs/" + song_id,
+        type: "DELETE",
+    });
+});
 
 $('.song').click(function() {
     console.log("clicked playlist's song");
@@ -9,4 +17,3 @@ $('.song').click(function() {
     var embedUrl = $(this).data('embed-url');
     document.getElementById('vid_frame').src = "//" + embedUrl;
 });
-

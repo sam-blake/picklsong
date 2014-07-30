@@ -11,6 +11,7 @@ $('.playlist').click(function() {
     $('#playlist_songs').append("<h4 class='active-playlist' data-id=" + id + ">" + name + "</h4>")
     $('#playlist_songs').append("<a class='delete-button'><i class='fa fa-minus-circle'></i></a>");
     $('.delete-button').click(function() {
+        //var playlist is sent to the songs_controller create method as params
         var playlist = $('.active-playlist').data('id');
         $.ajax({
             url: "/playlists/" + id,
@@ -20,9 +21,19 @@ $('.playlist').click(function() {
     //this is for when you create a new playlist, click out of it and then back in it without refreshing the page.
     var songData = $(this).data('songs');
     for (var i = 0; i < songData.length; i++) {
-        var template = "<div class='song' data-embed-url='" + songData[i].embed_url + " data-title='" + songData[i].title + "'><div id='pl-song-thumb'><img src='" + songData[i].thumbnail + "'></div><div id='pl-song-title' class='desc truncate line-clamp'>" + songData[i].title + "</div></div>";
+
+        var template = "<div class='song' data-id='" + songData[i].id + "' data-embed-url='" + songData[i].embed_url + " data-title='" + songData[i].title + "'><div id='pl-song-thumb'><img src='" + songData[i].thumbnail + "'></div><div id='pl-song-title' class='desc truncate'>" + songData[i].title + "</div><a class='song-delete-button'><i class='fa fa-minus-circle'></i></a></div>";
         $('#playlist_songs').append(template)
-        $('#playlist_songs').append("<a class='song-delete-button'><i class='fa fa-minus-circle'></i></a>");
+        var id = $('.song').data('id');
     }
+    $('.song-delete-button').click(function() {
+        var song_id = $(this).parent().data('id');
+        console.log(song_id);
+        $.ajax({
+            url: "/songs/" + song_id,
+            type: "DELETE"
+        });
+    });
+
 
 });
