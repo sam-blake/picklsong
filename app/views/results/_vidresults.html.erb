@@ -1,7 +1,7 @@
 <!--Results List-->
 <div class="vid-list-container">
     <div class="vid-list">
-        <% @alternatives.each_with_index do |result, index| %>
+        <% @results.each_with_index do |result, index| %>
             <div class="vid-item", data-attributes="<%= result.attributes.to_json %>">
                 <div class="thumb">
                     <img src="<%= result.thumbnail %>">
