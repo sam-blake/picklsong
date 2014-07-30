@@ -22,12 +22,21 @@ $(document).ready(function() {
         //itirate through all of the playlist songs and append the title and thumbnail for each via append. set data-song-attributes to song attributes
         var songData = $(this).data('songs');
         for (var i = 0; i < songData.length; i++) {
-            var templateString = "<div class='clearfix'><div id='track_<%= track %>' class='song' data-track='<%= track %>' data-video-id='<%= item.video_id %>' data-embed-url='<%= item.embed_url %>' data-title='<%= item.title %>'><span id='pl-song-thumb'><img src='<%=item.thumbnail%>'></span><h4 id='pl-song-title' class='truncate'><%= item.title %></h4></div></div>";
+            var templateString = "<div class='clearfix'><div id='track_<%= track %>' data-id='<%=item.id%>' class='song' data-track='<%= track %>' data-video-id='<%= item.video_id %>' data-embed-url='<%= item.embed_url %>' data-title='<%= item.title %>'><span id='pl-song-thumb'><img src='<%=item.thumbnail%>'></span><h4 id='pl-song-title' class='truncate'><%= item.title %></h4><a class='song-delete-button'><i class='fa fa-minus-circle'></i></a></div></div>";
             var template = _.template(templateString);
             $('#playlist_songs').append(template({
-                item: songData[i], track: i+1
+                item: songData[i],
+                track: i + 1
             }));
         }
+        $('.song-delete-button').click(function() {
+            var song_id = $(this).parent().data('id');
+            console.log(song_id);
+            $.ajax({
+                url: "/songs/" + song_id,
+                type: "DELETE"
+            });
+        });
 
         //when the song inside of the playlist is clicked it sets the active-song-title and video-id. Then is passed to playClickedSong 
         $('.song').click(function() {
