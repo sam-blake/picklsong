@@ -5,5 +5,73 @@
 .line-clamp {
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
+}
+
+.vid-container {
+  position: relative;
+  padding-bottom: 52%;
+  padding-top: 30px;
+  height: 0;
+}
+
+.vid-container iframe,
+.vid-container object,
+.vid-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.vid-list-container {
+  width: 92%;
+  overflow: hidden;
+  margin-top: 20px;
+  margin-left:4%;
+  padding-bottom: 20px;
+}
+
+.vid-list {
+  width: 2220px;
+  position: relative;
+  top:0;
+  left: 0;
+}
+
+
+
+
+span.thumb {
+  overflow: hidden;
+
+}
+
+.thumb img {
+    width: 72px;
+    float: left;
+    margin-right: 12px;
+}
+
+
+.clearfix:after {
+    content: ".";           /*Text will appear below all the floating children, can be any symbol really*/
+    display: block;     /*Makes . symbol take up all the horizontal space, 100% of parent container*/
+    clear: both;          /*Makes . symbol clear past the floating children, it's like having a foreign exchange student keep your room*/
+    visibility: hidden; /*Makes the . invisible*/
+    height: 0;             /*Makes . not take up any vertical height*/
+    line-height:0;  /*Makes height btw lines of text 0*/
+}
+
+h4.desc{
+  text-align: left;
+}
+
+.truncate {
+    width: 200px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

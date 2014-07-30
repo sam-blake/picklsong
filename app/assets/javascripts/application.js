@@ -29,4 +29,5 @@
 //= require main.js
 //= require modernizr.custom.js
 //= require grid
+//= perfectscrollbar.min.js
 //= require_tree .

@@ -20,9 +20,9 @@ $('.playlist').click(function() {
     //this is for when you create a new playlist, click out of it and then back in it without refreshing the page.
     var songData = $(this).data('songs');
     for (var i = 0; i < songData.length; i++) {
-        var template = "<div class='clearfix'><div class='song' data-embed-url='" + songData[i].embed_url + " data-title='" + songData[i].title + "'><span id='pl-song-thumb'><img src='" + songData[i].thumbnail + "'></span><h4 id='pl-song-title' class='truncate'>" + songData[i].title + "</h4></div></div>";
+        var template = "<div class='song' data-embed-url='" + songData[i].embed_url + " data-title='" + songData[i].title + "'><div id='pl-song-thumb'><img src='" + songData[i].thumbnail + "'></div><div id='pl-song-title' class='desc truncate line-clamp'>" + songData[i].title + "</div></div>";
         $('#playlist_songs').append(template)
         $('#playlist_songs').append("<a class='song-delete-button'><i class='fa fa-minus-circle'></i></a>");
-    } 
+    }
 
 });

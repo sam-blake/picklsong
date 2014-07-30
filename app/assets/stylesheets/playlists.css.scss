@@ -11,29 +11,41 @@
     font-weight: 300;
 }
 
-span#pl-song-thumb img {
-    width: 72px;
-    float: left;
-    margin-right: 12px;
-}
-
 h4#pl-song-title {
     text-align: left
 }
 
-.clearfix:after {
-    content: ".";           /*Text will appear below all the floating children, can be any symbol really*/
-    display: block;     /*Makes . symbol take up all the horizontal space, 100% of parent container*/
-    clear: both;          /*Makes . symbol clear past the floating children, it's like having a foreign exchange student keep your room*/
-    visibility: hidden; /*Makes the . invisible*/
-    height: 0;             /*Makes . not take up any vertical height*/
-    line-height:0;  /*Makes height btw lines of text 0*/
+div.song {
+  display: block;
+  width: 148px;
+  height: 148px;
+  float: left;
+  margin: 0;
+  padding: 10px;
+}
+
+div.song .desc{
+  width: 128px;
+  text-align: left;
+  color: black;
+  font-size: 15px;
+  margin-top:5px;
 }
 
 .truncate {
-    width: 220px;
+    width: 148px;
     white-space: normal;
     word-wrap: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+div#pl-song-thumb img {
+  width: 100%;
+  position: relative;
+}
+
+div#pl-song-thumb {
+  overflow:hidden;
+  height: 70px;
 }
