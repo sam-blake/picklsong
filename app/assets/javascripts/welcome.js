@@ -23,22 +23,23 @@
 
   function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.ENDED) {
-      playNextSong();
+      var activeTrack = $('#active-song-title').data('track');
+      playNextSong(activeTrack);
+
     }
   }
 
-  function playNextSong() {
-    // Figure out currently playing song
-    var activeSongTitle = $('#active-song-title').text();
-    console.log(activeSongTitle);
-    
-    // Creating variable equal to NEW video id
-    // var currentSongId = $('#main-player').data('video-id');
-    var nextSongId = $(".song[data-title='" + activeSongTitle + "']").parent().next().children().data('video-id');
-    // var nextSongId = $('.song[data-title="Beyonce - If I Were A Boy (Karaoke)"]').parent().next().children().data('video-id');
-    console.log(nextSongId);
-
+  // Ajax needs to change vid-container video_id in _vidmain.html.erb
+  function playNextSong(activeTrack) {
+    // Figure out currently playing song    
+    console.log("activeTrack: " + activeTrack);
+    var nextTrack = activeTrack + 1;
+    var nextSongTitle = $("#track_" + nextTrack).data('title');
+    var nextSongId = $("#track_" + nextTrack).data('video-id');
+    console.log(nextTrack + ': ' + nextSongTitle);
+    // Updates page
+    $('#active-song-title').attr('data-track', nextTrack);
+    $('#active-song-title').html(nextSongTitle);
     // Change video
     player.loadVideoById(nextSongId);
   }
-// Ajax needs to change vid-container video_id in _vidmain.html.erb
