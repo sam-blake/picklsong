@@ -24,19 +24,17 @@
   function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.ENDED) {
       var activeTrack = $('#active-song-title').data('track');
-      playNextSong(activeTrack);
-
+      playNextSong();
     }
   }
 
   // Ajax needs to change vid-container video_id in _vidmain.html.erb
-  function playNextSong(activeTrack) {
-    // Figure out currently playing song    
-    console.log("activeTrack: " + activeTrack);
+  function playNextSong() {
+    // Figure out currently playing song
+    var activeTrack = parseInt($('#active-song-title').attr('data-track'));
     var nextTrack = activeTrack + 1;
     var nextSongTitle = $("#track_" + nextTrack).data('title');
     var nextSongId = $("#track_" + nextTrack).data('video-id');
-    console.log(nextTrack + ': ' + nextSongTitle);
     // Updates page
     $('#active-song-title').attr('data-track', nextTrack);
     $('#active-song-title').html(nextSongTitle);
