@@ -1,3 +1,6 @@
+//playlist_controller create action sends us here.
+//a new playlist has been created, so we remove the form, and show the new link button
+//as well as append the dropdown-menu with the new playlist
 $('.new_playlist').remove();
 $('#new_link').show();
 $('.dropdown-menu').append("<li><a id=" + '<%= j Playlist.last.id.to_s%>' + " class='playlist' data-songs=" + '<%=j Playlist.last.songs.to_json%>' + " data-playlistid=" + '<%= j Playlist.last.id.to_s%>' + " data-name='" + '<%= j Playlist.last.name %>' + "'>" + '<%= j Playlist.last.name %>' + "</a></li>");
@@ -14,4 +17,12 @@ $('.playlist').click(function() {
             type: "DELETE"
         });
     });
+    //this is for when you create a new playlist, click out of it and then back in it without refreshing the page.
+    var songData = $(this).data('songs');
+    for (var i = 0; i < songData.length; i++) {
+        var template = "<div class='clearfix'><div class='song' data-embed-url='" + songData[i].embed_url + " data-title='" + songData[i].title + "'><span id='pl-song-thumb'><img src='" + songData[i].thumbnail + "'></span><h4 id='pl-song-title' class='truncate'>" + songData[i].title + "</h4></div></div>";
+        $('#playlist_songs').append(template)
+        $('#playlist_songs').append("<a class='song-delete-button'><i class='fa fa-minus-circle'></i></a>");
+    } 
+
 });
