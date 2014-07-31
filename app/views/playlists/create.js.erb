@@ -3,7 +3,7 @@
 $('.new_playlist').remove();
 $('#new_link').show();
 //append the dropdown-menu with the new playlist name and its attributes
-$('.dropdown-menu').append("<li><a id=" + '<%= j Playlist.last.id.to_s%>' + " class='playlist' data-songs=" + '<%=j Playlist.last.songs.to_json%>' + " data-playlistid=" + '<%= j Playlist.last.id.to_s%>' + " data-name='" + '<%= j Playlist.last.name %>' + "'>" + '<%= j Playlist.last.name %>' + "</a></li>");
+$('.dropdown-menu').append("<li><a id=" + '<%= @playlist.id.to_s%>' + " class='playlist' data-songs=" + '<%=@playlist.songs.to_json%>' + " data-playlistid=" + '<%= @playlist.id.to_s%>' + " data-name='" + '<%= @playlist.name %>' + "'>" + '<%= @playlist.name %>' + "</a></li>");
 $('.playlist').click(function() {
     var id = $(this).data('playlistid');
     var name = $(this).data('name')
