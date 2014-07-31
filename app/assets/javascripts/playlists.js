@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    //when you click on a playlist in the dropdown menu
+    //when you click on a playlist in the dropdown menu(NOT NEW)
     $('.playlist').click(function() {
         var playlist = $(this);
         var id = $(this).data('playlistid');
@@ -33,10 +33,16 @@ $(document).ready(function() {
         }
         $('.song-delete-button').click(function() {
             var song_id = $(this).parent().data('id');
+            var playlist = $('.active-playlist').data('id');
             console.log(song_id);
             $.ajax({
                 url: "/songs/" + song_id,
-                type: "DELETE"
+                type: "DELETE",
+                data: {
+                    id: song_id,
+                    playlist: playlist
+                },
+                success: console.log("Playlist id:" + playlist)
             });
         });
 
