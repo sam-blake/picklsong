@@ -14,6 +14,7 @@ $(document).ready(function() {
         //when you click on playlist delete button we send an ajax request to playlist_controller destroy method
         $('.delete-button').click(function() {
             var playlist = $('.active-playlist').data('id');
+            // SN NOTES: Remove element when success callback is called for ajax request
             $.ajax({
                 url: "/playlists/" + id,
                 type: "DELETE"

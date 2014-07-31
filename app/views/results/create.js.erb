@@ -1,21 +1,27 @@
-$('.search-results').html("<%= j(render("results/vidresults")) %>");
+$('.search-results').html("<%= j(render("results/vidresults"))%>");
 
 $(document).ready(function() {
     $('.vid-item').click(function() {
         console.log('clicked');
         var vidAttributes = $(this).data('attributes');
-        var activePlaylist = $('.active-playlist').data('id')
+        var activePlaylist = $('.active-playlist').data('id');
         $.ajax({
             type: "POST",
             url: "/songs",
-            data: {song: vidAttributes,playlist: activePlaylist},
+            data: {
+                song: vidAttributes,
+                playlist: activePlaylist
+            },
             dataType: 'script',
-            success: console.log("It worked!", vidAttributes, activePlaylist)
+            success: function(resp){
+                console.log("MADE IT!");
+                vidAttributes.id = get_song_id();
+                var playlist = $('#' + activePlaylist);
+                var addMe = playlist.data('songs');
+                addMe.push(vidAttributes);
+                playlist.attr('data-songs', JSON.stringify(addMe));
+            }
         });
-        var playlist = $('#' + activePlaylist);
-        var addMe = playlist.data('songs');
-        addMe.push(vidAttributes);
-        playlist.attr('data-songs', JSON.stringify(addMe));
     });
 });
 

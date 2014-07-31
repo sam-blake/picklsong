@@ -1,5 +1,4 @@
 $('#playlist_songs').append("<div class='song' data-id='<%= j Song.last.id.to_s %>' data-embed-url='<%= j Song.last.embed_url %>' data-title='<%= j Song.last.title %>'><div id='pl-song-thumb'><img src='<%=j Song.last.thumbnail%>'></div><div id='pl-song-title' class='desc truncate line-clamp'><%= j Song.last.title %></div><a class='song-delete-button'><i class='fa fa-minus-circle'></i></a></div>");
-var id = $('.song_<%= j Song.last.id.to_s %>').data('id');
 $('.song-delete-button').click(function() {
     var song_id = $(this).parent().data('id');
     var playlist = $('.active-playlist').data('id');
@@ -23,3 +22,7 @@ $('.song').click(function() {
     var embedUrl = $(this).data('embed-url');
     document.getElementById('vid_frame').src = "//" + embedUrl;
 });
+
+var get_song_id = function(){
+    return '<%= j Song.last.id.to_s %>';
+};
