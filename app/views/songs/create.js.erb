@@ -1,4 +1,4 @@
-$('#playlist_songs').append("<div class='song' data-id='<%= @song.id.to_s %>' data-embed-url='<%= @song.embed_url %>' data-title='<%= @song.title %>'><div id='pl-song-thumb'><img src='<%= @song.thumbnail%>'></div><div id='pl-song-title' class='desc truncate line-clamp'><%= @song.title %></div><a class='song-delete-button'><i class='fa fa-minus-circle'></i></a></div>");
+$('#playlist_songs').append("<div class='song' id='track_<%= @active_playlist.songs.length%>' data-video-id='<%=@song.video_id%>' data-track='<%= @active_playlist.songs.length%>' data-id='<%= @song.id.to_s %>' data-embed-url='<%= @song.embed_url %>' data-title='<%= @song.title %>'><div id='pl-song-thumb'><img src='<%= @song.thumbnail%>'></div><div id='pl-song-title' class='desc truncate line-clamp'><%= @song.title %></div><a class='song-delete-button'><i class='fa fa-minus-circle'></i></a></div>");
 $('.song-delete-button').click(function() {
     var song_id = $(this).parent().data('id');
     var playlist = $('.active-playlist').data('id');
@@ -13,6 +13,19 @@ $('.song-delete-button').click(function() {
         success: console.log("Playlist id:" + playlist)
     });
 });
+
+$('.song').click(function() {
+            var track = $(this).data('track');
+            var vidTitle = $(this).data('title');
+            var clickedSongId = $(this).data('video-id');
+            $('#active-song-title').attr('data-track', track);
+            $('#active-song-title').html(vidTitle);
+            playClickedSong(clickedSongId);
+            //changes video player to clicked song's video
+            function playClickedSong(clickedSongId) {
+                player.loadVideoById(clickedSongId);
+            }
+        });
 
 var get_song_id = function(){
     return '<%= j Song.last.id.to_s %>';
