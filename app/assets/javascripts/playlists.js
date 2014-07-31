@@ -4,7 +4,7 @@ $(document).ready(function() {
         var playlist = $(this);
         var id = $(this).data('playlistid');
         //setting playlist_song div to the clicked playlist's name and delete button. setting data attributes to playlist attributes
-        var titleTemplate = "<h4 class='active-playlist' data-id='<%= item.data('playlistid') %>'>Playlist: <%= item.data('name') %></h4><a class='delete-button'><i class='fa fa-minus-circle'></i></a>";
+        var titleTemplate = "<h4 class='active-playlist' data-id='<%= item.data('playlistid') %>'>Playlist: <%= item.data('name') %></h4><a class='delete-button'><i class='fa fa-times-circle-o'></i></a>";
         var titleTemp = _.template(titleTemplate);
         $('#playlist_title').html(titleTemp({
             item: playlist
@@ -26,7 +26,7 @@ $(document).ready(function() {
         var songData = $(this).data('songs');
         for (var i = 0; i < songData.length; i++) {
 
-            var templateString = "<div id='track_<%= track %>' data-id='<%=item.id%>' class='song' data-track='<%= track %>' data-video-id='<%= item.video_id %>' data-embed-url='<%= item.embed_url %>' data-title='<%= item.title %>'><div id='pl-song-thumb'><img src='<%=item.thumbnail%>'></div><div id='pl-song-title' class='desc truncate line-clamp'><%= item.title %></div><a class='song-delete-button'><i class='fa fa-minus-circle'></i></a>";
+            var templateString = "<div id='track_<%= track %>' data-id='<%=item.id%>' class='song' data-track='<%= track %>' data-video-id='<%= item.video_id %>' data-embed-url='<%= item.embed_url %>' data-title='<%= item.title %>'><a class='song-delete-button'><i class='fa fa-times-circle-o'></i></a><div id='pl-song-thumb'><img src='<%=item.thumbnail%>'></div><div id='pl-song-title' class='desc truncate line-clamp'><%= item.title %></div>";
 
             var template = _.template(templateString);
             $('#playlist_songs').append(template({

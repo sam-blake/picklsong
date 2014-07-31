@@ -3,8 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #playlist_panel {
-  padding-bottom: 24px;
+  /*padding-bottom: 24px;*/
   width: 100%;
+  background: rgb(150,180,160);
+  margin-top: 12px;
+  border-radius: 12px;
+  color: white;
 }
 
 .line-clamp {
@@ -76,5 +80,23 @@ div#pl-song-thumb img {
   float: left;
   display: inline-block;
   padding-right: 2px;
+
 }
 
+#playlist_songs .song-delete-button {
+  float: left;
+  position: relative;
+  left: 7px;
+  bottom: 5px;
+  z-index: 1;
+}
+
+.fa-times-circle-o {
+    padding: 0;
+    border-radius: 50%;
+    color: #4cddf3;
+    background-color: black;
+    display: block;
+    text-align: center;
+    font-size: 22px;
+}

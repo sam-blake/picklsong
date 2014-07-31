@@ -22,3 +22,7 @@
  *= require perfectscrollbar.min.css
  *= require_tree .
  */
+
+body {
+    background: rgb(90,150,110);
+}
