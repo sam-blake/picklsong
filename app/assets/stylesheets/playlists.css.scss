@@ -57,12 +57,12 @@ div.song .desc{
     text-overflow: ellipsis;
 }
 
-div#pl-song-thumb {
+div.pl-song-thumb {
   overflow:hidden;
   height: 70px;
 }
 
-div#pl-song-thumb img {
+div.pl-song-thumb img {
   width: 100%;
   position: relative;
 }

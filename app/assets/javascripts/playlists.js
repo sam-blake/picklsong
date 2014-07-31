@@ -26,7 +26,7 @@ $(document).ready(function() {
         var songData = $(this).data('songs');
         for (var i = 0; i < songData.length; i++) {
 
-            var templateString = "<div id='track_<%= track %>' data-id='<%=item.id%>' class='song' data-track='<%= track %>' data-video-id='<%= item.video_id %>' data-embed-url='<%= item.embed_url %>' data-title='<%= item.title %>'><a class='song-delete-button'><i class='fa fa-times-circle-o'></i></a><div id='pl-song-thumb'><img src='<%=item.thumbnail%>'></div><div id='pl-song-title' class='desc truncate line-clamp'><%= item.title %></div>";
+            var templateString = "<div id='track_<%= track %>' data-id='<%=item.id%>' class='song' data-track='<%= track %>' data-video-id='<%= item.video_id %>' data-embed-url='<%= item.embed_url %>' data-title='<%= item.title %>'><a class='song-delete-button'><i class='fa fa-times-circle-o'></i></a><div class='pl-song-thumb'><img src='<%=item.thumbnail%>'></div><div class='pl-song-title' class='desc truncate line-clamp'><%= item.title %></div>";
 
             var template = _.template(templateString);
             $('#playlist_songs').append(template({
@@ -50,10 +50,12 @@ $(document).ready(function() {
         });
 
         //when the song inside of the playlist is clicked it sets the active-song-title and video-id. Then is passed to playClickedSong
-        $('#pl-song-thumb').click(function() {
+        $('.pl-song-thumb').click(function() {
             var track = $(this).parent().data('track');
+            console.log(track);
             var vidTitle = $(this).parent().data('title');
             var clickedSongId = $(this).parent().data('video-id');
+            console.log(clickedSongId);
             $('#active-song-title').attr('data-track', track);
             $('#active-song-title').html(vidTitle);
             playClickedSong(clickedSongId);

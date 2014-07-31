@@ -22,7 +22,7 @@ $('.playlist').click(function() {
     var songData = $(this).data('songs');
     for (var i = 0; i < songData.length; i++) {
 
-        var template = "<div class='song' data-id='" + songData[i].id + "'id='track_"+ (i+1) + "' data-track='" + (i+1) + "' data-embed-url='" + songData[i].embed_url + " data-title='" + songData[i].title + "'><div id='pl-song-thumb'><img src='" + songData[i].thumbnail + "'></div><div id='pl-song-title' class='desc truncate line-clamp'>" + songData[i].title + "</div><a class='song-delete-button'><i class='fa fa-times-circle-o'></i></a></div>";
+        var template = "<div class='song' data-id='" + songData[i].id + "'id='track_"+ (i+1) + "' data-track='" + (i+1) + "' data-embed-url='" + songData[i].embed_url + " data-title='" + songData[i].title + "'><div class='pl-song-thumb'><img src='" + songData[i].thumbnail + "'></div><div class='pl-song-title' class='desc truncate line-clamp'>" + songData[i].title + "</div><a class='song-delete-button'><i class='fa fa-times-circle-o'></i></a></div>";
 
         $('#playlist_songs').append(template)
         var id = $(".song" + songData[i].id).data('id');

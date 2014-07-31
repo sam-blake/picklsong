@@ -32,7 +32,15 @@
   function playNextSong() {
     // Figure out currently playing song
     var activeTrack = parseInt($('#active-song-title').attr('data-track'));
-    var nextTrack = activeTrack + 1;
+    var playlistId = $('.active-playlist').data('id');
+    var songs = $('#'+playlistId).data('songs');
+    var nextTrack;
+    for (var i=activeTrack; i<=songs.length; i++){
+      if ( $('#track_' + (i+1)).length > 0 ) {
+        nextTrack = i+1;
+        break;
+      }
+    }
     var nextSongTitle = $("#track_" + nextTrack).data('title');
     var nextSongId = $("#track_" + nextTrack).data('video-id');
     // Updates page
