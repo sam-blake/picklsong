@@ -1,1 +1,9 @@
-$('.song[data-id=' + '<%= @song.id %>' + ']').remove();
+var playlist = $('#' + '<%= @playlist.id %>');
+var songs = $('#' + '<%= @playlist.id %>').data("songs");
+for (var i = 0; i < songs.length; i++) {
+    if (songs[i].id == '<%= @id%>') {
+        songs.splice(i, 1);
+        playlist.attr('data-songs', JSON.stringify(songs));
+    }
+};
+$('.song[data-id=' + '<%= @id %>' + ']').remove();
