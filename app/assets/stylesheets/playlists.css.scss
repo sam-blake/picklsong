@@ -4,6 +4,7 @@
 
 #playlist_panel {
   padding-bottom: 24px;
+  width: 100%;
 }
 
 .line-clamp {
@@ -16,12 +17,12 @@
     padding-top: 20px;
     position: relative;
     height: 200px;
-    width: 1000px;
+
     overflow: hidden;
 }
 
 #playlist_songs {
-  width: 100000000%;
+  width: 2000%;
 }
 
 .dropdown.polls-subtitle {
