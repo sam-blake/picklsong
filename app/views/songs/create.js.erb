@@ -14,15 +14,6 @@ $('.song-delete-button').click(function() {
     });
 });
 
-$('.song').click(function() {
-    console.log("clicked playlist's song");
-    var vidTitle = $(this).data('title');
-    console.log(vidTitle);
-    $('#active-song-title').text(vidTitle);
-    var embedUrl = $(this).data('embed-url');
-    document.getElementById('vid_frame').src = "//" + embedUrl;
-});
-
 var get_song_id = function(){
     return '<%= j Song.last.id.to_s %>';
 };

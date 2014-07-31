@@ -27,7 +27,6 @@
 .vid-list-container {
   width: 92%;
   overflow: hidden;
-  margin-left:4%;
   padding-bottom: 20px;
   position: relative;
   height: 800px;
@@ -43,6 +42,7 @@
 
 .results-title {
   margin-top: 20px;
+  text-align: left;
 }
 
 span.thumb {
