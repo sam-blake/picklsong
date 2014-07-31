@@ -1,4 +1,4 @@
-$('#playlist_songs').append("<div class='song' data-id='<%= j Song.last.id.to_s %>' data-embed-url='<%= j Song.last.embed_url %>' data-title='<%= j Song.last.title %>'><div id='pl-song-thumb'><img src='<%=j Song.last.thumbnail%>'></div><div id='pl-song-title' class='desc truncate line-clamp'><%= j Song.last.title %></div><a class='song-delete-button'><i class='fa fa-minus-circle'></i></a></div>");
+$('#playlist_songs').append("<div class='song' data-id='<%= @song.id.to_s %>' data-embed-url='<%= @song.embed_url %>' data-title='<%= @song.title %>'><div id='pl-song-thumb'><img src='<%= @song.thumbnail%>'></div><div id='pl-song-title' class='desc truncate line-clamp'><%= @song.title %></div><a class='song-delete-button'><i class='fa fa-minus-circle'></i></a></div>");
 $('.song-delete-button').click(function() {
     var song_id = $(this).parent().data('id');
     var playlist = $('.active-playlist').data('id');
