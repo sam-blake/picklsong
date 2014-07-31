@@ -5,8 +5,6 @@ $(document).ready(function() {
         console.log('clicked');
         var vidAttributes = $(this).data('attributes');
         var activePlaylist = $('.active-playlist').data('id');
-    var createSong = function(){
-    var song_id;
         $.ajax({
             type: "POST",
             url: "/songs",
@@ -16,19 +14,14 @@ $(document).ready(function() {
             },
             dataType: 'script',
             success: function(resp){
-                console.log(get_song_id());
-                song_id = get_song_id();
-                console.log("song is " + song_id);
-                }
-            });
-      console.log(song_id);
-    };
-        vidAttributes.id = createSong();
-        console.log(vidAttributes);
-        var playlist = $('#' + activePlaylist);
-        var addMe = playlist.data('songs');
-        addMe.push(vidAttributes);
-        playlist.attr('data-songs', JSON.stringify(addMe));
+                console.log("MADE IT!");
+                vidAttributes.id = get_song_id();
+                var playlist = $('#' + activePlaylist);
+                var addMe = playlist.data('songs');
+                addMe.push(vidAttributes);
+                playlist.attr('data-songs', JSON.stringify(addMe));
+            }
+        });
     });
 });
 
