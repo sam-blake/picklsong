@@ -4,9 +4,9 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    playlist = Playlist.create!(playlist_params)
-    playlist.user = current_user
-    playlist.save
+    @playlist = Playlist.create!(playlist_params)
+    @playlist.user = current_user
+    @playlist.save
       respond_to do |format|
         format.html {redirect_to root_path}
         format.js
