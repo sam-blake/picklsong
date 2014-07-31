@@ -29,5 +29,8 @@
 //= require main.js
 //= require modernizr.custom.js
 //= require grid
-//= perfectscrollbar.min.js
+//= require jquerymousewheel.min.js
+//= require perfectscrollbar.min.js
+//= require perfectscrollbar-mousewheel.min.js
 //= require_tree .
+

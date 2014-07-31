@@ -6,9 +6,10 @@ $(document).ready(function() {
         //setting playlist_song div to the clicked playlist's name and delete button. setting data attributes to playlist attributes
         var titleTemplate = "<h4 class='active-playlist' data-id='<%= item.data('playlistid') %>'><%= item.data('name') %></h4><a class='delete-button'><i class='fa fa-minus-circle'></i></a>";
         var titleTemp = _.template(titleTemplate);
-        $('#playlist_songs').html(titleTemp({
+        $('#playlist_title').html(titleTemp({
             item: playlist
         }));
+
 
         //when you click on playlist delete button we send an ajax request to playlist_controller destroy method
         $('.delete-button').click(function() {
@@ -20,10 +21,11 @@ $(document).ready(function() {
         });
 
         //iterate through all of the playlist songs and append the title and thumbnail for each via append. set data-song-attributes to song attributes
+        $('#playlist_songs').empty();
         var songData = $(this).data('songs');
         for (var i = 0; i < songData.length; i++) {
 
-            var templateString = "<div id='track_<%= track %>' data-id='<%=item.id%>' class='song' data-track='<%= track %>' data-video-id='<%= item.video_id %>' data-embed-url='<%= item.embed_url %>' data-title='<%= item.title %>'><div id='pl-song-thumb'><img src='<%=item.thumbnail%>'></div><div id='pl-song-title' class='desc truncate'><%= item.title %></div><a class='song-delete-button'><i class='fa fa-minus-circle'></i></a>";
+            var templateString = "<div id='track_<%= track %>' data-id='<%=item.id%>' class='song' data-track='<%= track %>' data-video-id='<%= item.video_id %>' data-embed-url='<%= item.embed_url %>' data-title='<%= item.title %>'><div id='pl-song-thumb'><img src='<%=item.thumbnail%>'></div><div id='pl-song-title' class='desc truncate line-clamp'><%= item.title %></div><a class='song-delete-button'><i class='fa fa-minus-circle'></i></a>";
 
             var template = _.template(templateString);
             $('#playlist_songs').append(template({
@@ -55,3 +57,4 @@ $(document).ready(function() {
         });
     });
 });
+

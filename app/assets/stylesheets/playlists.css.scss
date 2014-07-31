@@ -3,16 +3,30 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #playlist_panel {
+  padding-bottom: 24px;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+#pl_songs_scroll {
     padding-top: 20px;
+    position: relative;
+    height: 200px;
+    width: 1000px;
+    overflow: hidden;
+}
+
+#playlist_songs {
+  width: 2000px;
 }
 
 .dropdown.polls-subtitle {
     font-size: 24px;
     font-weight: 300;
-}
-
-h4#pl-song-title {
-    text-align: left
 }
 
 div.song {
@@ -40,12 +54,12 @@ div.song .desc{
     text-overflow: ellipsis;
 }
 
-div#pl-song-thumb img {
-  width: 100%;
-  position: relative;
-}
-
 div#pl-song-thumb {
   overflow:hidden;
   height: 70px;
+}
+
+div#pl-song-thumb img {
+  width: 100%;
+  position: relative;
 }

@@ -1,4 +1,15 @@
 <div id="playlist_panel">
-    <div id="playlist_songs">
+    <div id="playlist_title"></div>
+    <div id="pl_songs_scroll">
+      <div id="playlist_songs"></div>
     </div>
 </div>
+
+
+<script>
+    $(function() {
+        $('#pl_songs_scroll').perfectScrollbar({
+          suppressScrollY: true
+        });
+    });
+</script>

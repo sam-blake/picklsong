@@ -40,12 +40,8 @@
   left: 0;
 }
 
-
-
-
 span.thumb {
   overflow: hidden;
-
 }
 
 .thumb img {
@@ -53,7 +49,6 @@ span.thumb {
     float: left;
     margin-right: 12px;
 }
-
 
 .clearfix:after {
     content: ".";           /*Text will appear below all the floating children, can be any symbol really*/

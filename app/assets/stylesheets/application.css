@@ -19,6 +19,6 @@
  *= require animate.css
  *= require style-light.css
  *= require color.css
- *= perfectscrollbar.min.css
+ *= require perfectscrollbar.min.css
  *= require_tree .
  */
