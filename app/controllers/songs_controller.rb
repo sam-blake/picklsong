@@ -1,7 +1,6 @@
 class SongsController < ApplicationController
   def create
     @song = Song.where(:video_id => params[:song][:video_id]).first_or_create(song_params)
-    @song = Song.create(song_params)
     @active_playlist = Playlist.find(params[:playlist].to_i)
     @active_playlist.songs << @song
     respond_to do |format|
