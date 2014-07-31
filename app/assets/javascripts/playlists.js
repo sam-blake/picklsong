@@ -50,10 +50,10 @@ $(document).ready(function() {
         });
 
         //when the song inside of the playlist is clicked it sets the active-song-title and video-id. Then is passed to playClickedSong
-        $('.song').click(function() {
-            var track = $(this).data('track');
-            var vidTitle = $(this).data('title');
-            var clickedSongId = $(this).data('video-id');
+        $('#pl-song-thumb').click(function() {
+            var track = $(this).parent().data('track');
+            var vidTitle = $(this).parent().data('title');
+            var clickedSongId = $(this).parent().data('video-id');
             $('#active-song-title').attr('data-track', track);
             $('#active-song-title').html(vidTitle);
             playClickedSong(clickedSongId);
