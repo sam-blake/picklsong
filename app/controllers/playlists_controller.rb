@@ -21,7 +21,6 @@ class PlaylistsController < ApplicationController
 
   def destroy
     @playlist = Playlist.destroy(params[:id])
-    render nothing: true
   end
 
   private
