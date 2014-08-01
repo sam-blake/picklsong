@@ -5,37 +5,26 @@ $(document).ready(function() {
         console.log('clicked');
         var vidAttributes = $(this).data('attributes');
         var activePlaylist = $('.active-playlist').data('id');
-        $.ajax({
-            type: "POST",
-            url: "/songs",
-            data: {
-                song: vidAttributes,
-                playlist: activePlaylist
-            },
-            dataType: 'script',
-            success: function(resp){
-                console.log("MADE IT!");
-                vidAttributes.id = get_song_id();
-                var playlist = $('#' + activePlaylist);
-                var addMe = playlist.data('songs');
-                addMe.push(vidAttributes);
-                playlist.attr('data-songs', JSON.stringify(addMe));
-            }
-        });
-    });
-});
-
-$(document).ready(function() {
-    $(".arrow-right").bind("click", function(event) {
-        event.preventDefault();
-        $(".vid-list-container").stop().animate({
-            scrollLeft: "+=336"
-        }, 750);
-    });
-    $(".arrow-left").bind("click", function(event) {
-        event.preventDefault();
-        $(".vid-list-container").stop().animate({
-            scrollLeft: "-=336"
-        }, 750);
+        if ($('.active-playlist').length > 0) {
+            $.ajax({
+                type: "POST",
+                url: "/songs",
+                data: {
+                    song: vidAttributes,
+                    playlist: activePlaylist
+                },
+                dataType: 'script',
+                success: function(resp){
+                    console.log("MADE IT!");
+                    vidAttributes.id = get_song_id();
+                    var playlist = $('#' + activePlaylist);
+                    var addMe = playlist.data('songs');
+                    addMe.push(vidAttributes);
+                    playlist.attr('data-songs', JSON.stringify(addMe));
+                }
+            });
+        } else {
+            player.loadVideoById(vidAttributes.video_id);
+        }     
     });
 });
