@@ -23,7 +23,6 @@
 
   function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.ENDED) {
-      var activeTrack = $('#active-song-title').data('track');
       playNextSong();
     }
   }
