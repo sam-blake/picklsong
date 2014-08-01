@@ -1,4 +1,10 @@
+
+
 $(document).ready(function() {
+    $('.dropdown-toggle').click(function() {
+        $('.new_playlist').remove();
+        $('#new_link').show();
+    });
     //when you click on a playlist in the dropdown menu(NOT NEW)
     $('.playlist').click(function() {
         var playlist = $(this);
