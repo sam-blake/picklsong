@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #playlist_panel {
-  /*padding-bottom: 24px;*/
   width: 100%;
   background: rgb(150,180,160);
   margin-top: 12px;
@@ -19,7 +18,7 @@
 
 #pl_songs_scroll {
     position: relative;
-    height: 200px;
+    height: 180px;
     overflow: hidden;
 }
 
@@ -67,20 +66,50 @@ div.pl-song-thumb img {
   position: relative;
 }
 
+.pl-song-title {
+  color: white;
+  width: 128px;
+  text-align: left;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-left: 15px;
+
+  width: 148px;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+
+}
+
 .active-playlist {
   display: inline-block;
 }
 
 #playlist_title {
   text-align: left;
-  padding: 6px 0 0 0;
+  padding: 0 0 0 10px;
 }
 
 #playlist_title .delete-button {
-  float: left;
+  /*float: left;*/
   display: inline-block;
   padding-right: 2px;
+}
 
+#playlist_title a .fa-trash-o {
+  color: white;
+  font-size: 28px;
+  padding-left: 12px;
+}
+
+#playlist_title a:hover .fa-trash-o {
+  color: black;
 }
 
 #playlist_songs .song-delete-button {
@@ -91,12 +120,24 @@ div.pl-song-thumb img {
   z-index: 1;
 }
 
-.fa-times-circle-o {
-    padding: 0;
+#playlist_songs a .fa-times-circle-o {
+    width: 16px;
+    height: 18px;
+    line-height: 20px !important;
+    background-color: white;
+    color: rgba(0,0,0,.6);
     border-radius: 50%;
-    color: #4cddf3;
-    background-color: black;
-    display: block;
+    text-align: center;
+    font-size: 22px;
+}
+
+#playlist_songs a:hover .fa-times-circle-o {
+    width: 16px;
+    height: 18px;
+    line-height: 20px !important;
+    background-color: white;
+    color: rgba(0,0,0,1);
+    border-radius: 50%;
     text-align: center;
     font-size: 22px;
 }

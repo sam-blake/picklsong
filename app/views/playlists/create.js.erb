@@ -8,8 +8,8 @@ $('.playlist').click(function() {
     var id = $(this).data('playlistid');
     var name = $(this).data('name')
     $('#playlist_songs').empty();
-    $('#playlist_title').html("<h4 class='active-playlist' data-id=" + id + ">" + name + "</h4>")
-    $('#playlist_title').append("<a class='delete-button'><i class='fa fa-times-circle-o'></i></a>");
+    $('#playlist_title').html("<h3 class='active-playlist' data-id=" + id + ">" + name + "</h3>")
+    $('#playlist_title').append("<a class='delete-button'><i class='fa fa-trash-o'></i></a>");
     $('.delete-button').click(function() {
         //var playlist is sent to the songs_controller create method as params
         var playlist = $('.active-playlist').data('id');

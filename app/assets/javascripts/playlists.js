@@ -4,7 +4,7 @@ $(document).ready(function() {
         var playlist = $(this);
         var id = $(this).data('playlistid');
         //setting playlist_song div to the clicked playlist's name and delete button. setting data attributes to playlist attributes
-        var titleTemplate = "<h4 class='active-playlist' data-id='<%= item.data('playlistid') %>'>Playlist: <%= item.data('name') %></h4><a class='delete-button'><i class='fa fa-times-circle-o'></i></a>";
+        var titleTemplate = "<h3 class='active-playlist' data-id='<%= item.data('playlistid') %>'><%= item.data('name') %></h3><a class='delete-button'><i class='fa fa-trash-o'></i></a>";
         var titleTemp = _.template(titleTemplate);
         $('#playlist_title').html(titleTemp({
             item: playlist
