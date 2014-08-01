@@ -36,7 +36,7 @@ BLUE: #4cddf3;
     font-weight: 900;
     text-transform: uppercase;
     height: auto;
-    background: #4cddf3;
+    background: #25292c
     outline: 0;
 }
 .navbar .navbar-brand img {
@@ -53,7 +53,7 @@ BLUE: #4cddf3;
     font-size: 13px;
 }
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
-    background-color: #4cddf3;
+    background-color: #96B4A0;
     color: #FFF;
 }
 .navbar-default .navbar-nav>li>a:hover {
@@ -102,7 +102,7 @@ BLUE: #4cddf3;
     margin: 2px 0 0;
     list-style: none;
     font-size: 14px;
-    background-color: #4cddf3;
+    background-color: #96B4A0;
     border: 0;
     border: 0;
     border-radius: 0px;
