@@ -33,8 +33,12 @@
   overflow: hidden;
   padding-bottom: 20px;
   position: relative;
-  height: 800px;
-  width: 300px;
+  height: 710px;
+  width: 312px;
+  background: #96b4a0;
+  padding: 0px 0px 0px 15px;
+  border-radius: 12px;
+
 }
 
 .vid-list {
@@ -47,6 +51,7 @@
 .results-title {
   margin-top: 20px;
   text-align: left;
+  color: white;
 }
 
 span.thumb {
@@ -70,12 +75,14 @@ span.thumb {
 
 h4.desc{
   text-align: left;
+  font-size: 16px;
 }
 
 .truncate {
-    width: 200px;
+    width: 172px;
     white-space: normal;
     word-wrap: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: white;
 }
