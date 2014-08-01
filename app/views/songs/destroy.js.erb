@@ -1,9 +1,16 @@
+console.log("in destroy JS");
+console.log($('.song[data-id=' + '<%= @id %>' + ']').data('track'));
+console.log($('#active-song-title').attr("data-track"));
+if ($('.song[data-id=' + '<%= @id %>' + ']').data('track') == $('#active-song-title').attr("data-track")){
+  console.log("I DID IT!");
+  playNextSong();
+};
 var playlist = $('#' + '<%= @playlist.id %>');
 var songs = $('#' + '<%= @playlist.id %>').data("songs");
 for (var i = 0; i < songs.length; i++) {
-    if (songs[i].id == '<%= @id%>') {
-        songs.splice(i, 1);
-        playlist.attr('data-songs', JSON.stringify(songs));
-    }
+  if (songs[i].id == '<%= @id%>') {
+    songs.splice(i, 1);
+    playlist.attr('data-songs', JSON.stringify(songs));
+  }
 };
 $('.song[data-id=' + '<%= @id %>' + ']').remove();

@@ -44,8 +44,7 @@ $(document).ready(function() {
                 data: {
                     id: song_id,
                     playlist: playlist
-                },
-                success: console.log("Playlist id:" + playlist)
+                }
             });
         });
 
