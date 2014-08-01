@@ -1,0 +1,6 @@
+console.log("YIPPPPEEEE");
+$('.edit_playlist').remove();
+$('.active-playlist').html('<%= @playlist.name %>');
+$('#playlist_title').show();
+$('#<%= @playlist.id %>').html('<%= @playlist.name %>');
+$('#<%= @playlist.id %>').attr("data-name", '<%= @playlist.name %>');

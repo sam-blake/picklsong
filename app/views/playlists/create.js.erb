@@ -6,7 +6,7 @@ $('#new_link').show();
 $('.dropdown-menu').append("<li><a id=" + '<%= @playlist.id.to_s%>' + " class='playlist' data-songs=" + '<%=@playlist.songs.to_json%>' + " data-playlistid=" + '<%= @playlist.id.to_s%>' + " data-name='" + '<%= @playlist.name %>' + "'>" + '<%= @playlist.name %>' + "</a></li>");
 $('.playlist').click(function() {
     var id = $(this).data('playlistid');
-    var name = $(this).data('name')
+    var name = $(this).attr('data-name')
     $('#playlist_songs').empty();
     $('#playlist_title').html("<h3 class='active-playlist' data-id=" + id + ">" + name + "</h3>")
     $('#playlist_title').append("<a class='delete-button'><i class='fa fa-trash-o'></i></a>");
@@ -37,10 +37,10 @@ $('.playlist').click(function() {
             data: {
                 id: song_id,
                 playlist: playlist
-            },
-            success: console.log("Playlist id:" + playlist)
+            }
         });
     });
-
-
+$('#playlist_title').dblclick(function(){
+        console.log("It was clicked!");
+    });
 });

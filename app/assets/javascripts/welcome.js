@@ -35,9 +35,10 @@ function onPlayerStateChange(event) {
     var playlistId = $('.active-playlist').data('id');
     var songs = $('#'+playlistId).data('songs');
     var nextTrack;
-    for (var i=activeTrack; i<=songs.length; i++){
-      if ( $('#track_' + (i+1)).length > 0 ) {
-        nextTrack = i+1;
+    var lastTrack = $('#playlist_songs .song:last-child').attr("data-track");
+    for (var i=1; i<=lastTrack+1; i++){
+      if ( $('#track_' + (activeTrack+i)).length > 0 ) {
+        nextTrack = activeTrack+i;
         break;
       }
     }
