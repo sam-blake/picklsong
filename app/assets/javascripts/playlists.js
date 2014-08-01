@@ -5,12 +5,25 @@ $(document).ready(function() {
         $('.new_playlist').remove();
         $('#new_link').show();
     });
+
+
+    $('#playlist_title').dblclick(function(){
+        console.log("It was clicked!");
+        var playlistId = $('.active-playlist').data("id");
+        $.ajax({
+            type: "GET",
+            url: "/playlists/" + playlistId + "/edit",
+            dataType: "script",
+            success: console.log("success")
+        });
+    });
+
     //when you click on a playlist in the dropdown menu(NOT NEW)
     $('.playlist').click(function() {
         var playlist = $(this);
         var id = $(this).data('playlistid');
         //setting playlist_song div to the clicked playlist's name and delete button. setting data attributes to playlist attributes
-        var titleTemplate = "<h3 class='active-playlist' data-id='<%= item.data('playlistid') %>'><%= item.data('name') %></h3><a class='delete-button'><i class='fa fa-trash-o'></i></a>";
+        var titleTemplate = "<h3 class='active-playlist' data-id='<%= item.data('playlistid') %>'><%= item.attr('data-name') %></h3><a class='delete-button'><i class='fa fa-trash-o'></i></a>";
         var titleTemp = _.template(titleTemplate);
         $('#playlist_title').html(titleTemp({
             item: playlist

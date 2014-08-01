@@ -14,10 +14,17 @@ class PlaylistsController < ApplicationController
   end
 
   def edit
+    @playlist = Playlist.find(params[:id])
   end
 
   def update
+    @playlist = Playlist.find(params[:id])
+    @playlist.update(playlist_params)
+    respond_to do |format|
+      format.js
+    end
   end
+
 
   def destroy
     @playlist = Playlist.destroy(params[:id])
