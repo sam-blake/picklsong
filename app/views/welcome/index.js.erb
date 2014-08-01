@@ -1,0 +1,5 @@
+console.log("MADE IT TO INDEX!");
+$('#active-song-title').html("<%=@maing.title%>");
+$('#active-song-title').data("track").html("0");
+$('#main-player').data("video-id").eq('<%= @main.video_id %>');
+console.log("MADE IT TO THE END OF INDEX!");
