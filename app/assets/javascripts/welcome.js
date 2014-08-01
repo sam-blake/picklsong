@@ -1,31 +1,31 @@
 
-  var tag = document.createElement('script');
-  tag.src = "http://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var tag = document.createElement('script');
+tag.src = "http://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  var player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('main-player', {
-      height: '480',
-      width: '853',
-      videoId: $('#main-player').data('video-id'),
-      events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-      }
-    });
-  }
-
-  function onPlayerReady(event) {
-    event.target.playVideo();
-  }
-
-  function onPlayerStateChange(event) {
-    if (event.data === YT.PlayerState.ENDED) {
-      playNextSong();
+var player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('main-player', {
+    height: '480',
+    width: '853',
+    videoId: $('#main-player').data('video-id'),
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
     }
+  });
+}
+
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+function onPlayerStateChange(event) {
+  if (event.data === YT.PlayerState.ENDED) {
+    playNextSong();
   }
+}
 
   // Ajax needs to change vid-container video_id in _vidmain.html.erb
   function playNextSong() {
@@ -40,11 +40,13 @@
         break;
       }
     }
-    var nextSongTitle = $("#track_" + nextTrack).data('title');
-    var nextSongId = $("#track_" + nextTrack).data('video-id');
+    if (nextTrack){
+      var nextSongTitle = $("#track_" + nextTrack).data('title');
+      var nextSongId = $("#track_" + nextTrack).data('video-id');
     // Updates page
     $('#active-song-title').attr('data-track', nextTrack);
     $('#active-song-title').html(nextSongTitle);
     // Change video
     player.loadVideoById(nextSongId);
   }
+}
