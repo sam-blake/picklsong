@@ -27,20 +27,5 @@ $('.playlist').click(function() {
         $('#playlist_songs').append(template)
         var id = $(".song" + songData[i].id).data('id');
     }
-    $('.song-delete-button').click(function() {
-        var song_id = $(this).parent().data('id');
-        var playlist = $('.active-playlist').data('id');
-        console.log(song_id);
-        $.ajax({
-            url: "/songs/" + song_id,
-            type: "DELETE",
-            data: {
-                id: song_id,
-                playlist: playlist
-            }
-        });
-    });
-$('#playlist_title').dblclick(function(){
-        console.log("It was clicked!");
-    });
-});
+
+
