@@ -88,6 +88,7 @@ $(document).ready(function() {
     function appendSongToDropdownPlaylist(vidAttributes, activePlaylist, songsArray){
         vidAttributes.id = getSongId();
         songsArray.push(vidAttributes);
+        var playlist = $('#' + activePlaylist);
         playlist.attr('data-songs', JSON.stringify(songsArray));
     }
 
@@ -121,7 +122,7 @@ $(document).ready(function() {
     $('.search-results').on('click', '.vid-item', function() {
         var vidAttributes = $(this).data('attributes');
         var activePlaylist = $('.active-playlist').data('id');
-        var songsArray = $('.playlist').attr('data-songs');
+        var songsArray = $('.playlist').data('songs');
         if (checkIfActivePlaylist()){
             ajaxCreateSong(vidAttributes, activePlaylist, songsArray);
         } else {
