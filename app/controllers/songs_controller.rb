@@ -20,7 +20,7 @@ class SongsController < ApplicationController
     if @song.playlists.empty?
       Song.destroy(@song)
     end
-    # render nothing
+    render :nothing => true
   end
 
   private
