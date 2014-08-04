@@ -14,13 +14,13 @@ class SongsController < ApplicationController
 
   def destroy
     @song = Song.find(params[:id])
-    @id = @song.id
     @playlist = Playlist.find(params[:playlist])
-    songplaylist = SongPlaylist.find_by(song_id: @id, playlist_id: @playlist.id)
+    songplaylist = SongPlaylist.find_by(:song_id => @song.id, :playlist_id => @playlist.id)
     SongPlaylist.destroy(songplaylist)
     if @song.playlists.empty?
       Song.destroy(@song)
     end
+    # render nothing
   end
 
   private

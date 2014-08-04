@@ -1,31 +1,3 @@
-//playlist_controller create action sends us here.
-//a new playlist has been created, so we remove the form, and show the new link button again
 $('.new_playlist').remove();
 $('#new_link').show();
-//append the dropdown-menu with the new playlist name and its attributes
 $('.dropdown-menu').append("<li><a id=" + '<%= @playlist.id.to_s%>' + " class='playlist' data-songs=" + '<%=@playlist.songs.to_json%>' + " data-playlistid=" + '<%= @playlist.id.to_s%>' + " data-name='" + '<%= @playlist.name %>' + "'>" + '<%= @playlist.name %>' + "</a></li>");
-$('.playlist').click(function() {
-    var id = $(this).data('playlistid');
-    var name = $(this).attr('data-name')
-    $('#playlist_songs').empty();
-    $('#playlist_title').html("<h3 class='active-playlist' data-id=" + id + ">" + name + "</h3>")
-    $('#playlist_title').append("<a class='delete-button'><i class='fa fa-trash-o'></i></a>");
-    $('.delete-button').click(function() {
-        //var playlist is sent to the songs_controller create method as params
-        var playlist = $('.active-playlist').data('id');
-        $.ajax({
-            url: "/playlists/" + id,
-            type: "DELETE"
-        });
-    });
-    //this is for when you create a new playlist, click out of it and then back in it without refreshing the page.
-    var songData = $(this).data('songs');
-    for (var i = 0; i < songData.length; i++) {
-
-        var template = "<div class='song' data-id='" + songData[i].id + "'id='track_"+ (i+1) + "' data-track='" + (i+1) + "' data-embed-url='" + songData[i].embed_url + " data-title='" + songData[i].title + "'><a class='song-delete-button'><i class='fa fa-times-circle-o'></i></a><div class='pl-song-thumb'><img src='" + songData[i].thumbnail + "'></div><div class='pl-song-title' class='desc truncate line-clamp'>" + songData[i].title + "</div></div>";
-
-        $('#playlist_songs').append(template)
-        var id = $(".song" + songData[i].id).data('id');
-    }
-
-

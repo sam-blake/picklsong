@@ -122,7 +122,7 @@ $(document).ready(function() {
     $('.search-results').on('click', '.vid-item', function() {
         var vidAttributes = $(this).data('attributes');
         var activePlaylist = $('.active-playlist').data('id');
-        var songsArray = $('.playlist').data('songs');
+        var songsArray = JSON.parse($('#' + activePlaylist).attr("data-songs"));
         if (checkIfActivePlaylist()){
             ajaxCreateSong(vidAttributes, activePlaylist, songsArray);
         } else {
@@ -149,12 +149,11 @@ $(document).ready(function() {
         ajaxUpdatePlaylistName();
     });
 
-
     $('.dropdown-menu').on('click', '.playlist', function() {
         var playlist = $(this);
         appendPlaylistPanelWithPlaylist(playlist);
         
-        var songs = $(this).data('songs');
+        var songs = JSON.parse($(this).attr("data-songs"));
         appendPlaylistPanelWithSongs(songs);
     });
 
