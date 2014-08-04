@@ -104,6 +104,10 @@ $(document).ready(function() {
         });
     }
 
+    function getSongId(){
+        return $('#playlist_songs .song:last-child').attr("data-id");
+    }
+
     function checkIfActivePlaylist(){
        return ($('.active-playlist').length > 0);
     }
