@@ -1,87 +1,168 @@
-
-
 $(document).ready(function() {
-    $('.dropdown-toggle').click(function() {
-        $('.new_playlist').remove();
-        $('#new_link').show();
-    });
 
+//this is where the functions live :)
+    function checkIfSongMatches(songId){
+      var deletedSongTrack = $('.song[data-id=' + songId + ']').data("track");
+      var activeSongTrackStr = $('#active-song-title').attr("data-track");
+      return deletedSongTrack === parseInt(activeSongTrackStr, 10);
+    }
 
-    $('#playlist_title').dblclick(function(){
-        console.log("It was clicked!");
+    function removeSongFromDropdownPlaylist(songId, playlistId){
+        var playlist = $('#' + playlistId);
+        var songs = $('#' + playlistId).data("songs");
+        for (var i = 0; i < songs.length; i++) {
+            if (songs[i].id == songId) {
+              songs.splice(i, 1);
+              playlist.attr('data-songs', JSON.stringify(songs));
+            }
+        }
+    }
+
+    function destroySong(songId, playlistId){
+        var songMatches = checkIfSongMatches(songId);
+        if (songMatches){
+            playNextSong();
+        }
+        removeSongFromDropdownPlaylist(songId, playlistId);
+      $('.song[data-id=' + songId + ']').remove();
+    }
+
+    function ajaxDeleteSong(songId, playlistId){
+        $.ajax({
+            url: "/songs/" + songId,
+            type: "DELETE",
+            data: {
+                id: songId,
+                playlist: playlistId
+            },
+            success: destroySong(songId, playlistId)
+        });
+    }
+
+    function ajaxDeletePlaylist(){
+        var playlistId = $('.active-playlist').data('id');
+        $.ajax({
+            url: "/playlists/" + playlistId,
+            type: "DELETE"
+        });
+    }
+
+    function ajaxUpdatePlaylistName(){
         var playlistId = $('.active-playlist').data("id");
         $.ajax({
             type: "GET",
             url: "/playlists/" + playlistId + "/edit",
-            dataType: "script",
-            success: console.log("success")
+            dataType: "script"
         });
-    });
+    }
 
-    //when you click on a playlist in the dropdown menu(NOT NEW)
-    $('.playlist').click(function() {
-        var playlist = $(this);
-        var id = $(this).data('playlistid');
-        //setting playlist_song div to the clicked playlist's name and delete button. setting data attributes to playlist attributes
+    function appendPlaylistPanelWithPlaylist(playlist){
         var titleTemplate = "<h3 class='active-playlist' data-id='<%= item.data('playlistid') %>'><%= item.attr('data-name') %></h3><a class='delete-button'><i class='fa fa-trash-o'></i></a>";
         var titleTemp = _.template(titleTemplate);
         $('#playlist_title').html(titleTemp({
             item: playlist
         }));
+    }
 
-
-        //when you click on playlist delete button we send an ajax request to playlist_controller destroy method
-        $('.delete-button').click(function() {
-            var playlist = $('.active-playlist').data('id');
-            // SN NOTES: Remove element when success callback is called for ajax request
-            $.ajax({
-                url: "/playlists/" + id,
-                type: "DELETE"
-            });
-        });
-
-        //iterate through all of the playlist songs and append the title and thumbnail for each via append. set data-song-attributes to song attributes
+    function appendPlaylistPanelWithSongs(songs){
         $('#playlist_songs').empty();
-        var songData = $(this).data('songs');
-        for (var i = 0; i < songData.length; i++) {
-
+        for (var i = 0; i < songs.length; i++) {
             var templateString = "<div id='track_<%= track %>' data-id='<%=item.id%>' class='song' data-track='<%= track %>' data-video-id='<%= item.video_id %>' data-embed-url='<%= item.embed_url %>' data-title='<%= item.title %>'><a class='song-delete-button'><i class='fa fa-times-circle-o'></i></a><div class='pl-song-thumb'><img src='<%=item.thumbnail%>'></div><div class='pl-song-title' class='desc truncate line-clamp'><%= item.title %></div>";
-
             var template = _.template(templateString);
             $('#playlist_songs').append(template({
-                item: songData[i],
+                item: songs[i],
                 track: i + 1
             }));
         }
-        $('.song-delete-button').click(function() {
-            var song_id = $(this).parent().data('id');
-            var playlist = $('.active-playlist').data('id');
-            console.log(song_id);
-            $.ajax({
-                url: "/songs/" + song_id,
-                type: "DELETE",
-                data: {
-                    id: song_id,
-                    playlist: playlist
-                }
-            });
-        });
+    }
 
-        //when the song inside of the playlist is clicked it sets the active-song-title and video-id. Then is passed to playClickedSong
-        $('.pl-song-thumb').click(function() {
-            var track = $(this).parent().data('track');
-            console.log(track);
-            var vidTitle = $(this).parent().data('title');
-            var clickedSongId = $(this).parent().data('video-id');
-            console.log(clickedSongId);
-            $('#active-song-title').attr('data-track', track);
-            $('#active-song-title').html(vidTitle);
-            playClickedSong(clickedSongId);
-            //changes video player to clicked song's video
-            function playClickedSong(clickedSongId) {
-                player.loadVideoById(clickedSongId);
-            }
+    function playClickedSong(clickedSongId) {
+        player.loadVideoById(clickedSongId);
+    }
+    
+    function changeActiveSongTitle(track, vidTitle){
+        $('#active-song-title').attr('data-track', track);
+        $('#active-song-title').html(vidTitle);
+    }
+
+    function appendSongToDropdownPlaylist(vidAttributes, activePlaylist, songsArray){
+        vidAttributes.id = getSongId();
+        songsArray.push(vidAttributes);
+        var playlist = $('#' + activePlaylist);
+        playlist.attr('data-songs', JSON.stringify(songsArray));
+    }
+
+    function ajaxCreateSong(vidAttributes, activePlaylist, songsArray){
+         $.ajax({
+            type: "POST",
+            url: "/songs",
+            data: {
+                song: vidAttributes,
+                playlist: activePlaylist
+            },
+            dataType: 'script',
+            success: appendSongToDropdownPlaylist(vidAttributes, activePlaylist, songsArray)
         });
+    }
+
+    function getSongId(){
+        return $('#playlist_songs .song:last-child').attr("data-id");
+    }
+
+    function checkIfActivePlaylist(){
+       return ($('.active-playlist').length > 0);
+    }
+
+    function playResult(vidAttributes){
+        $('#active-song-title').html(vidAttributes.title);
+        player.loadVideoById(vidAttributes.video_id);
+    }
+
+//Where the events live :)
+    $('.search-results').on('click', '.vid-item', function() {
+        var vidAttributes = $(this).data('attributes');
+        var activePlaylist = $('.active-playlist').data('id');
+        var songsArray = JSON.parse($('#' + activePlaylist).attr("data-songs"));
+        if (checkIfActivePlaylist()){
+            ajaxCreateSong(vidAttributes, activePlaylist, songsArray);
+        } else {
+            playResult(vidAttributes);
+        }
     });
-});
 
+    $('.dropdown-toggle').click(function() {
+        $('.new_playlist').remove();
+        $('#new_link').show();
+    });
+
+    $('#playlist_songs').on('click', '.song-delete-button', function() {
+        var songId = $(this).parent().data('id');
+        var playlistId = $('.active-playlist').data('id');
+        ajaxDeleteSong(songId, playlistId);
+    });
+
+    $('#playlist_title').on('click', '.delete-button', function() {
+        ajaxDeletePlaylist();
+    });
+
+    $('#playlist_title').dblclick(function(){
+        ajaxUpdatePlaylistName();
+    });
+
+    $('.dropdown-menu').on('click', '.playlist', function() {
+        var playlist = $(this);
+        appendPlaylistPanelWithPlaylist(playlist);
+        
+        var songs = JSON.parse($(this).attr("data-songs"));
+        appendPlaylistPanelWithSongs(songs);
+    });
+
+    $('#playlist_songs').on('click', '.pl-song-thumb', function() {
+        var track = $(this).parent().data('track');
+        var vidTitle = $(this).parent().data('title');
+        var clickedSongId = $(this).parent().data('video-id');
+        playClickedSong(clickedSongId);
+        changeActiveSongTitle(track, vidTitle);
+    });
+
+});
