@@ -15,7 +15,6 @@
 .vid-container {
   position: relative;
   padding-bottom: 52%;
-  height: 0;
 }
 
 .vid-container iframe,
@@ -33,7 +32,7 @@
   overflow: hidden;
   padding-bottom: 20px;
   position: relative;
-  height: 740px;
+  max-height: 752px;
   width: 312px;
   background: #96b4a0;
   padding: 0px 0px 0px 15px;

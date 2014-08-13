@@ -1,6 +1,6 @@
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">PLAYLISTS<b class="caret"></b></a>
 <ul class="dropdown-menu" role="menu">
-    <li><%= link_to "New Playlist", new_playlist_path, id: "new_link", remote: true %></li>
+    <li><%= link_to "Create a New Playlist", new_playlist_path, id: "new_link", remote: true %></li>
     <%@playlists.each do |playlist|%>
         <li><a class="playlist" data-songs="<%=playlist.songs.to_json%>" id="<%=playlist.id%>" data-name="<%=playlist.name%>" data-playlistid="<%=playlist.id%>"><%=playlist.name%>
        </a></li>

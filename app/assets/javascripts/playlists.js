@@ -17,7 +17,7 @@ $(document).ready(function() {
             }
         }
     }
-
+    
     function destroySong(songId, playlistId){
         var songMatches = checkIfSongMatches(songId);
         if (songMatches){
@@ -121,9 +121,9 @@ $(document).ready(function() {
 //Where the events live :)
     $('.search-results').on('click', '.vid-item', function() {
         var vidAttributes = $(this).data('attributes');
-        var activePlaylist = $('.active-playlist').data('id');
-        var songsArray = JSON.parse($('#' + activePlaylist).attr("data-songs"));
         if (checkIfActivePlaylist()){
+             var activePlaylist = $('.active-playlist').data('id');
+             var songsArray = JSON.parse($('#' + activePlaylist).attr("data-songs"));
             ajaxCreateSong(vidAttributes, activePlaylist, songsArray);
         } else {
             playResult(vidAttributes);
