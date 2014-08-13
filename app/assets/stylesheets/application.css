@@ -26,3 +26,92 @@
 body {
     background: rgb(90,150,110);
 }
+
+a {
+    color: rgb(90,150,110);
+    font-weight: bold;
+}
+
+/* Modal*/
+.modal-dialog {
+    margin: auto;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    /*bottom: 150px;*/
+    right: 0;
+    height: auto;
+    width: 600px;
+
+}
+
+.modal-header {
+    background: #25292c;
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.modal-header .close {
+    color: white;
+    text-shadow: none;
+    opacity: 1;
+}
+
+.modal-content {
+  text-align: center;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.modal-footer {
+    margin-top: 0;
+    /*padding: 0;*/
+    border-top: none;
+}
+
+.line-thru {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    position: relative;
+    text-align: center;
+    width: 75%;
+    z-index: 1;
+}
+
+.line-thru:before {
+    width: 40px;
+    height: 10px;
+    background: white;
+    content: '';
+    margin: -5px 0 0 -20px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    z-index: -1;
+}
+
+.line-thru:after {
+    border-bottom: 1px solid #dfe0e6;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 49%;
+    width: 100%;
+    z-index: -2;
+}
+
+.modal-sign-up {
+    display: none;
+    width: 60%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.modal-sign-in {
+    display: none;
+    width: 60%;
+    margin: 0 auto;
+    text-align: left;
+}

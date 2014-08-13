@@ -20,6 +20,7 @@ function onPlayerReady(event) {
   event.target.playVideo();
 }
 
+
 function onPlayerStateChange(event) {
   if (event.data === YT.PlayerState.ENDED) {
     playNextSong();
@@ -50,3 +51,28 @@ function onPlayerStateChange(event) {
     player.loadVideoById(nextSongId);
   }
 }
+$(document).ready(function() {
+  $('.tipster').on('click', function() {
+    $('.modal-welcome').show();
+    $('.modal-sign-up').hide();
+    $('.modal-sign-in').hide();
+  });
+  $('.signup-link').on('click', function() {
+    $('.modal-sign-in').hide();
+    $('.modal-welcome').hide();
+    $('.modal-sign-up').slideDown();
+  });
+  $('.login-link').on('click', function() {
+    $('.modal-sign-up').hide();
+    $('.modal-welcome').hide();
+    $('.modal-sign-in').slideDown();
+  });
+
+});
+
+// $(document).click(function () {
+//     $('#back').hide();
+//     $('#details').slideUp(function () {
+//         $('#students').slideDown();
+//     });
+// });
