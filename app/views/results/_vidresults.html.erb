@@ -6,7 +6,11 @@
             <div class="clearfix">
             <div class="vid-item", data-attributes="<%= result.attributes.to_json %>">
                 <span class="thumb">
-                    <img src="<%= result.thumbnail %>">
+                    <% if user_signed_in? %>
+                        <img src="<%= result.thumbnail %>" data-toggle="tooltip" data-placement="top" title="Click to add to current playlist!">
+                    <%else%>
+                     <img src="<%= result.thumbnail %>" data-toggle="tooltip" data-placement="top" title="Click me to play!">
+                    <%end%>
                 </span>
                 <h4 class="desc truncate line-clamp">
                     <%= result.title %>
