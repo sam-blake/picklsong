@@ -154,3 +154,17 @@ div .tooltip-inner{
  background: #96b4a0;
 }
 
+#pl-edit-field {
+  display: table;
+  width: auto;
+}
+
+#pl-edit-field.form-control {
+  border-top-left-radius: 12px;
+}
+
+#pl-edit-field .btn {
+  margin: -5px 0px -5px 1px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 0px;
+}
