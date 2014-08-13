@@ -9,6 +9,7 @@
   border-radius: 12px;
   color: white;
   margin: 15px 0;
+  padding-bottom: 15px;
 }
 
 .line-clamp {
@@ -144,3 +145,13 @@ div.pl-song-thumb img {
     text-align: center;
     font-size: 22px;
 }
+
+.tooltip{
+  top: 100px;
+}
+div .tooltip-inner{
+ white-space: nowrap;
+ color: white;
+ background: #777;
+}
+

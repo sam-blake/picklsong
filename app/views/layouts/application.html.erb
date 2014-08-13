@@ -41,7 +41,7 @@
                                     <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></li>
 
                                 <% else %>
-                                    <li><%= link_to "SIGN UP", new_user_registration_path %></li>
+                                    <li><%= link_to "SIGN UP", new_user_registration_path, :class=> "sscroll", :data=>{:toggle=>"tooltip", :placement=> "bottom"}, title: "Sign up to create a playlist!"  %></li>
                                     <li><%= link_to "LOGIN", new_user_session_path %></li>
                                 <% end %>
                             </ul>
