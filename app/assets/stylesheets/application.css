@@ -27,7 +27,64 @@ body {
     background: rgb(90,150,110);
 }
 
-/*modal stuff*/
-.modal-header{
-  border-bottom: none;
+a {
+    color: rgb(90,150,110);
+    font-weight: bold;
+}
+
+/* Modal*/
+.modal-dialog {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 150px;
+    right: 0;
+    height: 200px;
+    width: 600px;
+
+}
+
+.modal-header {
+    background: #25292c;
+    color: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.modal-content {
+  text-align: center;
+  border-radius: 12px;
+}
+
+.line-thru {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    position: relative;
+    text-align: center;
+    width: 75%;
+    z-index: 1;
+}
+
+.line-thru:before {
+    width: 40px;
+    height: 10px;
+    background: white;
+    content: '';
+    margin: -5px 0 0 -20px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    z-index: -1;
+}
+
+.line-thru:after {
+    border-bottom: 1px solid #dfe0e6;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 49%;
+    width: 100%;
+    z-index: -2;
 }
