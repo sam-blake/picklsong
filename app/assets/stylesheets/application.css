@@ -26,3 +26,8 @@
 body {
     background: rgb(90,150,110);
 }
+
+/*modal stuff*/
+.modal-header{
+  border-bottom: none;
+}
