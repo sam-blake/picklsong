@@ -36,11 +36,11 @@ a {
 .modal-dialog {
     margin: auto;
     position: absolute;
-    top: 0;
+    top: 60px;
     left: 0;
-    bottom: 150px;
+    /*bottom: 150px;*/
     right: 0;
-    height: 200px;
+    height: auto;
     width: 600px;
 
 }
@@ -48,13 +48,26 @@ a {
 .modal-header {
     background: #25292c;
     color: white;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.modal-header .close {
+    color: white;
+    text-shadow: none;
+    opacity: 1;
 }
 
 .modal-content {
   text-align: center;
+  height: 100%;
   border-radius: 12px;
+}
+
+.modal-footer {
+    margin-top: 0;
+    /*padding: 0;*/
+    border-top: none;
 }
 
 .line-thru {
@@ -87,4 +100,18 @@ a {
     top: 49%;
     width: 100%;
     z-index: -2;
+}
+
+.modal-sign-up {
+    display: none;
+    width: 60%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.modal-sign-in {
+    display: none;
+    width: 60%;
+    margin: 0 auto;
+    text-align: left;
 }

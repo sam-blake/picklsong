@@ -44,7 +44,7 @@
                             <li><%= link_to "SIGN UP", new_user_registration_path, :class=> "sscroll", :data=>{:toggle=>"tooltip", :placement=> "bottom"}, title: "Sign up to create a playlist!"  %></li>
                             <li><%= link_to "LOGIN", new_user_session_path %></li>
                             <% end %>
-                            <li><%=link_to '?', "#", :data => {:toggle=>"modal", :target=>"#myModal"} %><li> 
+                            <li><%=link_to '?', "#", class: "tipster", :data => {:toggle=>"modal", :target=>"#myModal"} %><li> 
 
                             </ul>
                         </div>
@@ -64,11 +64,25 @@
                                 </h1>
                           </div>
                         <div class="modal-body">
-                            <h3><%=link_to 'Sign up', new_user_registration_path%> or <%= link_to "login", new_user_session_path %> to start creating</h3>
-                            <h3>karaoke playlists for your party!</h3>
-                            <br>
-                            <h4 class="line-thru"> or </h4>
-                            <h3>Start<a href="http://karaoke.pickl.me"> searching</a> now!</h3>
+                            <div class="modal-welcome">
+                                <h3>
+                                    <!-- <p class="signup-link">Sign up</p> -->
+                                    <%= link_to 'Sign up', '#', class: "signup-link" %> or <%= link_to "login", '#', class: "login-link" %> to start creating</h3>
+                                <h3>karaoke playlists for your party!</h3>
+                                <br>
+                                <h4 class="line-thru"> or </h4>
+                                <h3>Start<a href="http://karaoke.pickl.me"> searching</a> now!</h3>
+                            </div><!--modal-welcome-->
+
+                            <div class="modal-sign-up">
+                                <%= render "devise/registrations/new" %>
+                            </div><!--modal-sign-up-->
+
+                            <div class="modal-sign-in">
+                                <%= render "devise/sessions/new" %>
+                            </div><!--modal-sign-in-->
+                        </div><!--modal-body-->
+                        <div class="modal-footer">
                         </div>
                     </div>
                 </div>
