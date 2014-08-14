@@ -116,3 +116,15 @@ a {
     float: left;
     margin: 0 0 0 5px;
 }
+
+form.new_playlist {
+    margin: 0 10px;
+}
+
+form.new_playlist #pl-edit-field input.btn {
+    margin-top: 4px;
+}
+
+ul.nav li.dropdown a.dropdown-toggle {
+    height: 58px;
+}
