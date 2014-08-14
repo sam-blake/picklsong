@@ -58,10 +58,12 @@ $(document).ready(function() {
     $('.modal-sign-in').hide();
   });
   $('.signup-link').on('click', function() {
+    $('.modal-sign-in').hide();
     $('.modal-welcome').hide();
     $('.modal-sign-up').slideDown();
   });
   $('.login-link').on('click', function() {
+    $('.modal-sign-up').hide();
     $('.modal-welcome').hide();
     $('.modal-sign-in').slideDown();
   });

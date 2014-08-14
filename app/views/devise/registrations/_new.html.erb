@@ -16,10 +16,10 @@
         <%=f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, autocomplete: "off", :class=> "form-control", :placeholder => "Password confirmation" %>
       </div>
-      <%= f.submit "Sign up", :class=>"btn btn-default" %>
       <div class="form-group">
-      <a href="/users/sign_in">Sign in</a>
-       <%end%>
+        <%= f.submit "Sign up", :class=>"btn btn-default" %>
       </div>
+       <%end%>
     </form>
+    <a class="login-link" href="#">Sign in</a>
 </section>
