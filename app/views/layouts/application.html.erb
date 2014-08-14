@@ -41,11 +41,10 @@
                             <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></li>
 
                             <% else %>
-                            <li><%= link_to "SIGN UP", new_user_registration_path, :class=> "sscroll", :data=>{:toggle=>"tooltip", :placement=> "bottom"}, title: "Sign up to create a playlist!"  %></li>
-                            <li><%= link_to "LOGIN", new_user_session_path %></li>
+                            <li><%= link_to "SIGN UP", '#', :class=> "navbar-signup-link"%></li>
+                            <li><%= link_to "LOGIN", '#', :class=>"navbar-login-link" %></li>
                             <% end %>
                             <li><%=link_to '?', "#", class: "tipster", :data => {:toggle=>"modal", :target=>"#myModal"} %><li> 
-
                             </ul>
                         </div>
                         <!-- /.navbar-collapse -->
@@ -54,39 +53,47 @@
                 </nav>
                 <!-- END NAVBAR -->
             </div><!--outter-->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                <h1 class="modal-title" id="myModalLabel">
-                                    <%= image_tag("pickles-128.png", :alt => "logo", :title => "Home", :class=>"images", :id=>"logo", :size=>"40") %>  Welcome to PicklSong!
-                                </h1>
-                          </div>
-                        <div class="modal-body">
-                            <div class="modal-welcome">
-                                <h3>
-                                    <!-- <p class="signup-link">Sign up</p> -->
-                                    <%= link_to 'Sign up', '#', class: "signup-link" %> or <%= link_to "login", '#', class: "login-link" %> to start creating</h3>
-                                <h3>karaoke playlists for your party!</h3>
-                                <br>
-                                <h4 class="line-thru"> or </h4>
-                                <h3>Start<a href="http://karaoke.pickl.me"> searching</a> now!</h3>
-                            </div><!--modal-welcome-->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h1 class="modal-title" id="myModalLabel">
+                            <%= image_tag("pickles-128.png", :alt => "logo", :title => "Home", :class=>"images", :id=>"logo", :size=>"40") %>  Welcome to PicklSong!
+                        </h1>
+                    </div>
+                    <div class="modal-body">
+                      <div class="modal-welcome"> 
+                        <% if !user_signed_in? %>
+                        <h3>
+                            <!-- <p class="signup-link">Sign up</p> -->
+                            <%= link_to 'Sign up', '#', class: "signup-link" %> or <%= link_to "login", '#', class: "login-link" %> to start creating</h3>
+                            <h3>karaoke playlists for your party!</h3>
+                            <br>
+                            <h4 class="line-thru"> or </h4>
+                            <h3>Start<a href="http://karaoke.pickl.me"> searching</a> now!</h3>
+                              <%else%>
+                    <h3>Click on the playlist link in the navbar to select or create a playlist</h3>
+                    <h3>Then, start searching for your favorite crowd pleasers</h3>
+                    <h3>Once you have the search results, you can click on any song to add to your playlist</h3>
+                    <h3>To get the playlist going, click on the first song</h3>
+                    <h3>Now you're ready to SING to your heart's content!</h3>
+                    <%end%>
+                        </div><!--modal-welcome-->
+                        
+                        <div class="modal-sign-up">
+                            <%= render "devise/registrations/new" %>
+                        </div><!--modal-sign-up-->
 
-                            <div class="modal-sign-up">
-                                <%= render "devise/registrations/new" %>
-                            </div><!--modal-sign-up-->
-
-                            <div class="modal-sign-in">
-                                <%= render "devise/sessions/new" %>
-                            </div><!--modal-sign-in-->
-                        </div><!--modal-body-->
-                        <div class="modal-footer">
-                        </div>
+                        <div class="modal-sign-in">
+                            <%= render "devise/sessions/new" %>
+                        </div><!--modal-sign-in-->
+                    </div><!--modal-body-->
+                    <div class="modal-footer">
                     </div>
                 </div>
             </div>
+        </div>
         <%= yield %>
         <br>
         <br>

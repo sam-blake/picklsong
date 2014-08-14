@@ -67,8 +67,38 @@ $(document).ready(function() {
     $('.modal-welcome').hide();
     $('.modal-sign-in').slideDown();
   });
+  $('#signup-button').on("click", function(e){
+    e.preventDefault();
+    var form = $('#registration-new');
+    $.ajax({
+      type: "POST",
+      url: "/users",
+      data: form.serialize(),
+      dataType: "script",
+      success: function(data){
+        console.log(data);
+      }
+    });
+  });
 
+  $(".navbar-signup-link").on('click', function(){
+    $('.tipster').trigger("click");
+    $('.modal-welcome').hide();
+    $('.modal-sign-in').hide();
+    $('.modal-sign-up').show();
+  });
+
+  $(".navbar-login-link").on('click', function(){
+    $('.tipster').trigger("click");
+    $('.modal-welcome').hide();
+    $('.modal-sign-up').hide();
+    $('.modal-sign-in').show();
+  });
 });
+
+
+
+
 
 // $(document).click(function () {
 //     $('#back').hide();
