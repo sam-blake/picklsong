@@ -7,6 +7,7 @@
     <%= csrf_meta_tags %>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div id="container">
         <div class="outter">
@@ -41,8 +42,10 @@
                             <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></li>
 
                             <% else %>
+
                             <li><%= link_to "SIGN UP", '#', :class=> "navbar-signup-link"%></li>
                             <li><%= link_to "LOGIN", '#', :class=>"navbar-login-link" %></li>
+
                             <% end %>
                             <li><%=link_to '?', "#", class: "tipster", :data => {:toggle=>"modal", :target=>"#myModal"} %><li> 
                             </ul>

@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  background-image: url(image-path('carefree-background.jpg'));
+}
+
 .input-group {
     width: 600px;
     left: 10px;

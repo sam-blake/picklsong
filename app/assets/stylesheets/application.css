@@ -23,10 +23,6 @@
  *= require_tree .
  */
 
-body {
-    background: rgb(90,150,110);
-}
-
 a {
     color: rgb(90,150,110);
     font-weight: bold;
@@ -114,4 +110,21 @@ a {
     width: 60%;
     margin: 0 auto;
     text-align: left;
+}
+
+.dancer {
+    float: left;
+    margin: 0 0 0 5px;
+}
+
+form.new_playlist {
+    margin: 0 10px;
+}
+
+form.new_playlist #pl-edit-field input.btn {
+    margin-top: 4px;
+}
+
+ul.nav li.dropdown a.dropdown-toggle {
+    height: 58px;
 }
