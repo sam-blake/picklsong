@@ -128,3 +128,7 @@ form.new_playlist #pl-edit-field input.btn {
 ul.nav li.dropdown a.dropdown-toggle {
     height: 58px;
 }
+
+ul.nav ul.dropdown-menu{
+    background: #25292c;
+}
